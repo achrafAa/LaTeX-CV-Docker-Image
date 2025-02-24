@@ -25,5 +25,5 @@ jobs:
         context: .
         push: true
         tags: |
-          ghcr.io/${{ github.repository }}:latest
-          ghcr.io/${{ github.repository }}:${{ github.sha }} 
+          ghcr.io/achrafaa/latex-cv-docker-image:latest
+          ghcr.io/achrafaa/latex-cv-docker-image:${{ github.sha }} 
