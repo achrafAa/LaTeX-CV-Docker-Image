@@ -9,25 +9,30 @@ This Docker image is designed to simplify the process of building LaTeX-based CV
 
 ## Quick Start
 
-To build your CV using this Docker image, run:
+To build your CV using this Docker image:
 
 ```bash
-docker run --rm --user $(id -u):$(id -g) -w "/doc" -v "$(PWD)":/doc aachraf/latex-cv-docker:latest make
-```
+# Build resume.pdf
+docker run --rm -v $(pwd):/doc aachraf/latex-cv-docker make resume.pdf
 
-This will mount your current directory to the `/doc` volume, where the LaTeX project files are located.
+# Build cv.pdf
+docker run --rm -v $(pwd):/doc aachraf/latex-cv-docker make cv.pdf
+```
 
 ## Usage with Makefile
 
-Add the following to your Makefile to use the Docker image:
+Add the following to your Makefile:
 
 ```makefile
 DOCKER_IMAGE=aachraf/latex-cv-docker
 
-.PHONY: docker-cv clean
+.PHONY: docker-cv docker-resume clean
 
 docker-cv:
-	docker run --rm --user $(shell id -u):$(shell id -g) -w "/doc" -v "$(PWD)":/doc $(DOCKER_IMAGE):latest make cv.pdf
+	docker run --rm -v $(PWD):/doc $(DOCKER_IMAGE) make cv.pdf
+
+docker-resume:
+	docker run --rm -v $(PWD):/doc $(DOCKER_IMAGE) make resume.pdf
 
 clean:
 	rm -f *.pdf *.aux *.log *.out

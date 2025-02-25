@@ -2,8 +2,8 @@ FROM --platform=$BUILDPLATFORM debian:bullseye-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install required packages
-RUN apt-get update && apt-get install -y \
+# Install required packages in a single layer
+RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-xetex \
     texlive-fonts-recommended \
     texlive-fonts-extra \
