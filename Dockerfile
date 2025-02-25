@@ -1,17 +1,30 @@
-FROM --platform=$BUILDPLATFORM alpine:3.19
+FROM --platform=$BUILDPLATFORM alpine:3.19 AS builder
 
-# Install required packages
+# Install minimal TeX packages for building
 RUN apk add --no-cache \
+    make \
     texlive-xetex \
     texlive \
-    texmf-dist-fontsextra \
-    texmf-dist-latexextra \
     font-roboto \
     font-awesome \
-    make
+    && rm -rf /var/cache/apk/*
 
-# Set working directory
+# Create a minimal TeX environment
+WORKDIR /texlive
+
+# Create a final minimal image
+FROM --platform=$BUILDPLATFORM alpine:3.19
+
+# Copy only necessary files from builder
+COPY --from=builder /usr/bin/xelatex /usr/bin/
+COPY --from=builder /usr/bin/make /usr/bin/
+COPY --from=builder /usr/share/texmf-dist /usr/share/texmf-dist
+COPY --from=builder /usr/share/fonts /usr/share/fonts
+
+# Set required environment variables
+ENV PATH="/usr/bin:${PATH}"
+
+# Set working directory for CV building
 WORKDIR /doc
 
-# Set default command
 CMD ["make"] 
