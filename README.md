@@ -5,7 +5,7 @@ This Docker image is designed to simplify the process of building LaTeX-based CV
 ## Features
 - Full TeXLive installation with XeTeX
 - Pre-installed fonts (Roboto, FontAwesome)
-- Optimized for modern CV templates [Awesome-CV](https://github.com/posquit0/Awesome-CV)
+- Optimized for modern CV templates like [Awesome-CV](https://github.com/posquit0/Awesome-CV)
 
 ## Quick Start
 
