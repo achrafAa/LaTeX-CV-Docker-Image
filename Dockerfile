@@ -3,7 +3,7 @@ FROM debian:bullseye-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required packages
-RUN apt-get update && apt-get install -y \
+RUN dpkg --configure -a && apt-get update && apt-get install -f -y \
     texlive-xetex \
     texlive-fonts-recommended \
     texlive-fonts-extra \
