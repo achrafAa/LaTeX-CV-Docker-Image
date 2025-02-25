@@ -12,10 +12,26 @@ This Docker image is designed to simplify the process of building LaTeX-based CV
 To build your CV using this Docker image, run:
 
 ```bash
-docker run --rm --user $(id -u):$(id -g) -w "/doc" -v "$(PWD)":/doc ghcr.io/achrafaamri/latex-cv make
+docker run --rm --user $(id -u):$(id -g) -w "/doc" -v "$(PWD)":/doc aachraf/latex-cv-docker:latest make
 ```
 
-This will mount your current directory to the `/cv` volume, where the LaTeX project files are located.
+This will mount your current directory to the `/doc` volume, where the LaTeX project files are located.
+
+## Usage with Makefile
+
+Add the following to your Makefile to use the Docker image:
+
+```makefile
+DOCKER_IMAGE=aachraf/latex-cv-docker
+
+.PHONY: docker-cv clean
+
+docker-cv:
+	docker run --rm --user $(shell id -u):$(shell id -g) -w "/doc" -v "$(PWD)":/doc $(DOCKER_IMAGE):latest make cv.pdf
+
+clean:
+	rm -f *.pdf *.aux *.log *.out
+```
 
 ## Included Packages
 - texlive-xetex
