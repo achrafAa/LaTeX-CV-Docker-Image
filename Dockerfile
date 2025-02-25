@@ -1,9 +1,9 @@
-FROM debian:bullseye-slim
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required packages
-RUN dpkg --configure -a && apt-get update && apt-get install -f -y \
+RUN apt-get update && apt-get install -y \
     texlive-xetex \
     texlive-fonts-recommended \
     texlive-fonts-extra \
