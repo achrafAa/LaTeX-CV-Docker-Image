@@ -2,6 +2,9 @@
 
 This Docker image is designed to simplify the process of building LaTeX-based CVs and resumes. It includes all necessary LaTeX packages and fonts.
 
+Size: 160.58 MB
+
+
 ## Features
 - Full TeXLive installation with XeTeX
 - Pre-installed fonts (Roboto, FontAwesome)
