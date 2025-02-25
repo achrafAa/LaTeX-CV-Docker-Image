@@ -27,5 +27,5 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{ secrets.DOCKER_USERNAME }}/latex-cv-docker-image:latest
-          ${{ secrets.DOCKER_USERNAME }}/latex-cv-docker-image:${{ github.sha }} 
+          ${{ secrets.DOCKER_USERNAME }}/latex-cv-docker:latest
+          ${{ secrets.DOCKER_USERNAME }}/latex-cv-docker:${{ github.sha }} 
