@@ -44,3 +44,6 @@ clean:
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Docker Hub Repository
+You can find the Docker image on Docker Hub: [aachraf/latex-cv-docker](https://hub.docker.com/r/aachraf/latex-cv-docker)
+
