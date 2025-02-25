@@ -1,18 +1,14 @@
-FROM --platform=$BUILDPLATFORM debian:bullseye-slim
+FROM --platform=$BUILDPLATFORM alpine:3.19
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Install required packages in a single layer
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Install required packages
+RUN apk add --no-cache \
     texlive-xetex \
-    texlive-fonts-recommended \
-    texlive-fonts-extra \
-    texlive-latex-extra \
-    fonts-roboto \
-    fonts-font-awesome \
-    make \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
+    texlive \
+    texmf-dist-fontsextra \
+    texmf-dist-latexextra \
+    font-roboto \
+    font-awesome \
+    make
 
 # Set working directory
 WORKDIR /doc
