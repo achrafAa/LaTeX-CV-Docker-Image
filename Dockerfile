@@ -1,27 +1,21 @@
-FROM --platform=$BUILDPLATFORM alpine:3.19 AS builder
+FROM --platform=$BUILDPLATFORM debian:bullseye-slim
 
-# Install minimal TeX packages for building
-RUN apk add --no-cache \
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install required packages in a single layer
+RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-xetex \
-    && rm -rf /var/cache/apk/*
-
-# Create a final minimal image
-FROM --platform=$BUILDPLATFORM alpine:3.19
-
-# Install only essential tools and fonts
-RUN apk add --no-cache \
+    texlive-fonts-recommended \
+    texlive-fonts-extra \
+    texlive-latex-extra \
+    fonts-roboto \
+    fonts-font-awesome \
     make \
-    font-roboto \
-    font-awesome \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
-# Copy only absolutely necessary files from builder
-COPY --from=builder /usr/bin/xelatex /usr/bin/
-COPY --from=builder /usr/share/texmf-dist/tex /usr/share/texmf-dist/tex
-COPY --from=builder /usr/share/texmf-dist/fonts /usr/share/texmf-dist/fonts
-COPY --from=builder /usr/share/texmf-dist/web2c /usr/share/texmf-dist/web2c
-
-# Set working directory for CV building
+# Set working directory
 WORKDIR /doc
 
+# Set default command
 CMD ["make"] 
