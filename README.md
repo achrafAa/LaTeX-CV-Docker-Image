@@ -1,5 +1,12 @@
 # LaTeX CV Docker Image
 
+[![Docker Hub](https://img.shields.io/docker/pulls/aachraf/latex-cv-docker?style=flat-square&logo=docker&logoColor=white&label=Docker%20Pulls)](https://hub.docker.com/r/aachraf/latex-cv-docker)
+[![Docker Image Size](https://img.shields.io/docker/image-size/aachraf/latex-cv-docker?style=flat-square&logo=docker&logoColor=white)](https://hub.docker.com/r/aachraf/latex-cv-docker)
+[![GitHub Stars](https://img.shields.io/github/stars/achrafAa/LaTeX-CV-Docker-Image?style=flat-square&logo=github)](https://github.com/achrafAa/LaTeX-CV-Docker-Image)
+[![GitHub Forks](https://img.shields.io/github/forks/achrafAa/LaTeX-CV-Docker-Image?style=flat-square&logo=github)](https://github.com/achrafAa/LaTeX-CV-Docker-Image)
+[![License](https://img.shields.io/github/license/achrafAa/LaTeX-CV-Docker-Image?style=flat-square)](https://github.com/achrafAa/LaTeX-CV-Docker-Image/blob/main/LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/achrafAa/LaTeX-CV-Docker-Image?style=flat-square&logo=github)](https://github.com/achrafAa/LaTeX-CV-Docker-Image/issues)
+
 This Docker image is designed to simplify the process of building LaTeX-based CVs and resumes. It includes all necessary LaTeX packages and fonts.
 
 
